@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta name="google-adsense-account" content="ca-pub-7750291789443147">  
-  <meta name="google-site-verification" content="wjXL_0hMn3AOHTuL08Cjw0sr4Y8G222R3JuuA5zKINc" />  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-7750291789443147">  
+  <meta name="google-site-verification" content="wjXL_0hMn3AOHTuL08Cjw0sr4Y8G222R3JuuA5zKINc" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>수험생 집중 타이머 | 공부용 온라인 타이머</title>
-  
   <link rel="canonical" href="https://gwanoove.github.io/Low-SimpleTimer/" />
-
   <meta name="description" content="수험생을 위한 무료 온라인 집중 타이머. 50분 공부와 10분 휴식을 간단하게 관리하세요.">
 
-  <!-- ✅ 애드센스 공통 스크립트 (딱 한 번) -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7750291789443147"
+  <!-- 애드센스 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7750291789443147"
      crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 
+<body>
   <div class="container">
+
     <h1>수험생을 위한 집중 타이머</h1>
 
     <p class="desc">
@@ -27,11 +27,43 @@
       설치 없이 바로 사용할 수 있습니다.
     </p>
 
-    <div class="timer-wrapper">
-      <canvas id="progressCanvas" width="220" height="220"></canvas>
-      <div id="timeText">50:00</div>
+    <!-- ✅ 타이머 + 프리셋 전체 레이아웃 -->
+    <div class="timer-layout">
+
+      <!-- ✅ 왼쪽: 5분 단위 버튼 -->
+      <div class="preset-panel">
+        <div class="preset-title">5분 단위</div>
+
+        <button class="preset-btn" onclick="setCustomMinutes(5)">5</button>
+        <button class="preset-btn" onclick="setCustomMinutes(10)">10</button>
+        <button class="preset-btn" onclick="setCustomMinutes(15)">15</button>
+        <button class="preset-btn" onclick="setCustomMinutes(20)">20</button>
+        <button class="preset-btn" onclick="setCustomMinutes(25)">25</button>
+        <button class="preset-btn" onclick="setCustomMinutes(30)">30</button>
+        <button class="preset-btn" onclick="setCustomMinutes(35)">35</button>
+        <button class="preset-btn" onclick="setCustomMinutes(40)">40</button>
+        <button class="preset-btn" onclick="setCustomMinutes(45)">45</button>
+        <button class="preset-btn" onclick="setCustomMinutes(50)">50</button>
+      </div>
+
+      <!-- ✅ 오른쪽: 원형 타이머 -->
+      <div class="timer-wrapper">
+
+        <!-- 원형 좌상단 라벨 -->
+        <div class="label-top-left">5분</div>
+
+        <!-- 원형 우하단 라벨 -->
+        <div class="label-bottom-right">
+          <div>50분 공부</div>
+          <div>10분 휴식</div>
+        </div>
+
+        <canvas id="progressCanvas" width="220" height="220"></canvas>
+        <div id="timeText">50:00</div>
+      </div>
     </div>
 
+    <!-- ✅ 컨트롤 버튼 -->
     <div class="buttons">
       <button onclick="startStudy()">공부 시작</button>
       <button id="pauseBtn" onclick="togglePause()">일시정지</button>
@@ -49,11 +81,11 @@
            data-ad-slot="여기에_내_광고슬롯_ID"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
     </div>
+
   </div>
 
   <script src="script.js"></script>

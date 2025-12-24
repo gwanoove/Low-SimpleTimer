@@ -1,4 +1,6 @@
-/* 전체 화면 가운데 배치 */
+/* =========================
+   전체 화면 기본 설정
+========================= */
 body {
   margin: 0;
   min-height: 100vh;
@@ -11,7 +13,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* 카드 컨테이너: 세로로 쌓이게 */
+/* =========================
+   카드 컨테이너
+========================= */
 .container {
   width: 100%;
   max-width: 420px;
@@ -19,13 +23,15 @@ body {
   padding: 32px;
   border-radius: 16px;
 
-  display: flex;           /* ✅ 핵심 */
-  flex-direction: column;  /* ✅ 핵심: 위로 쌓임 */
-  align-items: center;     /* ✅ 가로 가운데 */
-  gap: 16px;               /* ✅ 요소 간 간격 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
-/* 텍스트 */
+/* =========================
+   텍스트
+========================= */
 h1 {
   margin: 0;
   color: #1f3c88;
@@ -39,7 +45,49 @@ h1 {
   text-align: center;
 }
 
-/* 원형 타이머 */
+/* =========================
+   타이머 + 프리셋 레이아웃
+========================= */
+.timer-layout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* =========================
+   왼쪽 5분 단위 버튼 패널
+========================= */
+.preset-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.preset-title {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.preset-btn {
+  width: 52px;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: #e9eefc;
+  color: #1f3c88;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.preset-btn:hover {
+  filter: brightness(0.95);
+}
+
+/* =========================
+   원형 타이머
+========================= */
 .timer-wrapper {
   position: relative;
   width: 220px;
@@ -65,13 +113,37 @@ h1 {
   color: #1f3c88;
 }
 
-/* 버튼 */
+/* =========================
+   원형 타이머 라벨
+========================= */
+.label-top-left {
+  position: absolute;
+  top: -10px;
+  left: -6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1f3c88;
+}
+
+.label-bottom-right {
+  position: absolute;
+  right: -6px;
+  bottom: -10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1f3c88;
+  text-align: right;
+  line-height: 1.2;
+}
+
+/* =========================
+   하단 버튼 영역
+========================= */
 .buttons {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 12px; 
-
+  gap: 12px;
 }
 
 button {
@@ -88,7 +160,9 @@ button:hover {
   background: #162d66;
 }
 
-/* 광고 */
+/* =========================
+   광고 영역
+========================= */
 .ad-box {
   width: 100%;
   padding: 16px;

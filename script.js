@@ -40,23 +40,6 @@ function togglePause() {
   }
 }
 
-/* 실제 타이머 동작 */
-function startInterval() {
-  interval = setInterval(() => {
-    remainingSeconds--;
-    drawProgress();
-
-    if (remainingSeconds <= 0) {
-      clearInterval(interval);
-      interval = null;
-      isPaused = false;
-      pauseBtn.innerText = "일시정지";
-
-      alert("45분 공부 완료!");
-    }
-  }, 1000);
-}
-
 /* 원형 타이머 그리기 */
 function drawProgress() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -165,4 +148,20 @@ function startInterval() {
       drawProgress();
     }
   }, 1000);
+}
+
+function setCustomMinutes(minutes) {
+  if (interval) {
+    clearInterval(interval);
+    interval = null;
+  }
+
+  isPaused = false;
+  pauseBtn.innerText = "일시정지";
+
+  mode = "study";
+  totalSeconds = minutes * 60;
+  remainingSeconds = totalSeconds;
+
+  drawProgress();
 }
