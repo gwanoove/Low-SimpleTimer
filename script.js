@@ -40,8 +40,6 @@ function togglePause() {
   }
 }
 
-
-
 /* 원형 타이머 그리기 */
 function drawProgress() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -166,4 +164,14 @@ function setCustomMinutes(minutes) {
   remainingSeconds = totalSeconds;
 
   drawProgress();
+}
+
+function onWheelChange() {
+  const select = document.getElementById("minuteWheel");
+  const minutes = Number(select.value);
+
+  setCustomMinutes(minutes);
+
+  // 좌상단 라벨도 같이 변경하고 싶다면
+  document.querySelector(".label-top-left").innerText = `${minutes}분`;
 }
