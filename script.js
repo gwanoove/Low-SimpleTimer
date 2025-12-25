@@ -1,5 +1,6 @@
 const canvas = document.getElementById("progressCanvas");
 const ctx = canvas.getContext("2d");
+const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const STUDY_TIME = 50 * 60; // 50분
 const BREAK_TIME = 10 * 60; // 10분
@@ -10,6 +11,7 @@ let remainingSeconds = totalSeconds;
 let interval = null;
 let mode = "study";
 let isPaused = false;
+let currentStudyMinutes = 50;
 
 drawProgress();
 
@@ -20,6 +22,22 @@ function startStudy() {
   isPaused = false;
   pauseBtn.innerText = "일시정지";
   startInterval(); // ✅ 타이머 시작
+}
+
+function handleStart() {
+  if (interval) return;
+
+  if (mode === "study") {
+    startStudy();
+  } else if (mode === "break") {
+    startBreak();
+  }
+}
+
+function startBreak() {
+  isPaused = false;
+  pauseBtn.innerText = "일시정지";
+  startInterval();
 }
 
 /* 일시정지 / 다시시작 토글 */
@@ -78,7 +96,7 @@ function finishStudySession() {
 
   studyLogs.push({
     time: now.toLocaleTimeString(),
-    duration: 50
+    duration: currentStudyMinutes
   });
 
   renderLogs();
@@ -137,11 +155,15 @@ function startInterval() {
         mode = "break";
         totalSeconds = BREAK_TIME;
         remainingSeconds = totalSeconds;
-        alert("50분 공부 완료! 휴식 시작");
+        
+        startBtn.innerText = "휴식 시작";
+        alert(`${currentStudyMinutes}분 공부완료! 휴식 시작 버튼을 눌러주세요`);
       } else {
         mode = "study";
         totalSeconds = STUDY_TIME;
         remainingSeconds = totalSeconds;
+        
+        startBtn.innerText = "공부 시작";
         alert("휴식 종료! 다시 공부하세요");
       }
 
@@ -160,6 +182,7 @@ function setCustomMinutes(minutes) {
   pauseBtn.innerText = "일시정지";
 
   mode = "study";
+  currentStudyMinutes = minutes;
   totalSeconds = minutes * 60;
   remainingSeconds = totalSeconds;
 
@@ -169,9 +192,7 @@ function setCustomMinutes(minutes) {
 function onWheelChange() {
   const select = document.getElementById("minuteWheel");
   const minutes = Number(select.value);
-
   setCustomMinutes(minutes);
-
-  // 좌상단 라벨도 같이 변경하고 싶다면
-  document.querySelector(".label-top-left").innerText = `${minutes}분`;
 }
+
+
