@@ -22,47 +22,50 @@
     <h1>수험생을 위한 집중 타이머</h1>
 
     <p class="desc">
-      수험생이 공부 시간과 휴식 시간을 간단하게 관리할 수 있는 무료 온라인 타이머입니다.
-      설치 없이 바로 사용할 수 있습니다.
+      수험생이 공부 시간과 휴식 시간을 간단하게 관리할 수 있는 <br>
+      무료 온라인 타이머입니다. 설치 없이 바로 사용할 수 있습니다.
     </p>
 
     <!-- ✅ 타이머 영역 -->
     <div class="timer-layout">
       <div class="timer-wrapper">
 
-        <!-- ⭕ 동그라미 왼쪽 위 휠 -->
-        <select
-          id="minuteWheel"
-          class="minute-wheel-top"
-          onchange="onWheelChange()"
-        >
-          <option value="5">5분</option>
-          <option value="10">10분</option>
-          <option value="15">15분</option>
-          <option value="20">20분</option>
-          <option value="25">25분</option>
-          <option value="30">30분</option>
-          <option value="35">35분</option>
-          <option value="40">40분</option>
-          <option value="45">45분</option>
-          <option value="50" selected>50분</option>
-        </select>
+        <!-- ✅ 공부시간 라벨 + 분 선택 휠 -->
+        <div class="minute-wheel-box">
+          <div class="minute-wheel-label">공부시간</div>
+          <select
+            id="minuteWheel"
+            class="minute-wheel-top"
+            onchange="onWheelChange()"
+          >
+            <option value="5">5분</option>
+            <option value="10">10분</option>
+            <option value="15">15분</option>
+            <option value="20">20분</option>
+            <option value="25">25분</option>
+            <option value="30">30분</option>
+            <option value="35">35분</option>
+            <option value="40">40분</option>
+            <option value="45">45분</option>
+            <option value="50" selected>50분</option>
+          </select>
+        </div>
 
-       
-
-        <canvas id="progressCanvas" width="220" height="220"></canvas>
+        <canvas id="progressCanvas" width="300" height="300"></canvas>
         <div id="timeText">50:00</div>
+
       </div>
     </div>
 
     <div class="buttons">
-      <button onclick="startStudy()">공부 시작</button>
+      <button id="startBtn" onclick="handleStart()">공부 시작</button>
       <button id="pauseBtn" onclick="togglePause()">일시정지</button>
     </div>
 
     <div class="buttons share-row">
-     <button onclick="shareToday()">오늘 기록 공유</button>
+      <button onclick="shareToday()">오늘 기록 공유</button>
     </div>
+
     <ul id="logList"></ul>
 
     <div class="ad-box">
