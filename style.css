@@ -35,6 +35,20 @@ h1 {
   color: #1f3c88;
   text-align: center;
 }
+.preset-btn {
+  width: 52px;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: #e9eefc;
+  color: #1f3c88;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.preset-btn:hover {
+  filter: brightness(0.95);
+}
 
 .desc {
   margin: 0;
@@ -59,6 +73,47 @@ h1 {
   position: relative;
   width: 300px;
   height: 300px;
+}
+
+/* ✅ 타이머 + 왼쪽 버튼 레이아웃 */
+.timer-layout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ✅ 왼쪽 5분 단위 버튼 패널 */
+.preset-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.preset-title {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.label-top-left {
+  position: absolute;
+  top: -10px;
+  left: -6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1f3c88;
+}
+
+.label-bottom-right {
+  position: absolute;
+  right: -6px;
+  bottom: -10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1f3c88;
+  text-align: right;
+  line-height: 1.2;
 }
 
 #progressCanvas {
